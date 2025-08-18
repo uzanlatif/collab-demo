@@ -15,7 +15,7 @@ export default function HeroSection() {
         </div>
         <div className="relative w-full h-80 md:h-[500px]">
           <Image
-            src="/images/showcase/showcase-hero.png"
+            src="/page/showcase/showcase-hero.png"
             alt="Showcase Hero"
             fill
             className="object-contain"

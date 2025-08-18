@@ -71,7 +71,7 @@ const sections: SectionProps[] = [
     description:
       "Collab Media is a group of digital platforms—Abis Ini Kemana Ya?, Kapan Cobain, and Approv—that promote travel destinations, support local food businesses, and cover trending news and entertainment.",
     solutions: ["Advertorial", "Event Attending", "Sponsorship"],
-    imageSrc: "/assets/collab_media.png",
+    imageSrc: "/page/services/collab media.png",
     color: "text-green-400",
     accent: "border-green-400",
     button: "bg-green-500",
