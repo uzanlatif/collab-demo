@@ -91,6 +91,37 @@ export default function ShowcaseSection() {
       image: "/images/showcase/wardah-skinverse.png",
       className: "md:col-span-1 md:row-span-1",
     },
+
+    // Tambahan 3 card biar grid penuh
+    {
+      id: 13,
+      title: "Extra Showcase 1",
+      category: "Branding",
+      image: "/images/showcase/cosmos.png",
+      className: "md:col-span-1 md:row-span-1",
+    },
+    {
+      id: 14,
+      title: "Extra Showcase 2",
+      category: "Travel",
+      image: "/images/showcase/tiketx9gag.png",
+      className: "md:col-span-1 md:row-span-1",
+    },
+    {
+      id: 15,
+      title: "Extra Showcase 3",
+      category: "Marketing",
+      image: "/images/showcase/nyamnyam.png",
+      className: "md:col-span-1 md:row-span-1",
+    },
+    {
+      id: 16,
+      title: "Extra Showcase 2",
+      category: "Travel",
+      image: "/images/showcase/tiketx9gag.png",
+      className: "md:col-span-1 md:row-span-1",
+    },
+    
   ];
 
   return (

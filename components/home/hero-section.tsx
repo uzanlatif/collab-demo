@@ -13,46 +13,33 @@ const heroImages = [
   "/images/hero/6.png",
 ];
 
+const topImages = [
+  "/images/hero/top-images/1-main.png",
+  "/images/hero/top-images/2-digital.png",
+  "/images/hero/top-images/3-community.png",
+  "/images/hero/top-images/4-production.png",
+  "/images/hero/top-images/5-media.png",
+  "/images/hero/top-images/6-event.png",
+];
+
 const heroTexts = [
-  {
-    tagline: "We are",
-    title: ["Full Service", "Integrated Marketing", "Solutions"],
-  },
-  {
-    tagline: "Collab Digital",
-    title: ["Helps your business", "optimize paid media", "across platforms."],
-  },
-  {
-    tagline: "Community Digital",
-    title: ["Crafting Connections", "Between Brands", "and Voices."],
-  },
-  {
-    tagline: "Collab Media",
-    title: ["Strategic outlets", "to elevate your", "brand presence."],
-  },
-  {
-    tagline: "Collab Production",
-    title: ["Creative visuals", "tailored to your", "brand needs."],
-  },
-  {
-    tagline: "Collab Event",
-    title: ["Memorable events", "for stronger", "brand connection."],
-  },
+  { tagline: "We are", title: ["Full Service", "Integrated Marketing", "Solutions"] },
+  { tagline: "Collab Digital", title: ["Helps your business", "optimize paid media", "across platforms."] },
+  { tagline: "Community Digital", title: ["Crafting Connections", "Between Brands", "and Voices."] },
+  { tagline: "Collab Media", title: ["Strategic outlets", "to elevate your", "brand presence."] },
+  { tagline: "Collab Production", title: ["Creative visuals", "tailored to your", "brand needs."] },
+  { tagline: "Collab Event", title: ["Memorable events", "for stronger", "brand connection."] },
 ];
 
 export default function HeroSection() {
   const [current, setCurrent] = useState(0);
-  const [mousePos, setMousePos] = useState({
-    x: 0,
-    y: 0,
-    clientX: 0,
-    clientY: 0,
-  });
+  const [mousePos, setMousePos] = useState({ x: 0, y: 0, clientX: 0, clientY: 0 });
   const [hover, setHover] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     heroImages.forEach((src) => (new Image().src = src));
+    topImages.forEach((src) => (new Image().src = src));
   }, []);
 
   useEffect(() => {
@@ -65,7 +52,6 @@ export default function HeroSection() {
   useEffect(() => {
     const el = sectionRef.current;
     if (!el) return;
-
     const onMove = (e: MouseEvent) => {
       const { left, top, width, height } = el.getBoundingClientRect();
       setMousePos({
@@ -75,17 +61,14 @@ export default function HeroSection() {
         clientY: e.clientY,
       });
     };
-
     const onEnter = () => setHover(true);
     const onLeave = () => {
       setHover(false);
       setMousePos({ x: 0, y: 0, clientX: 0, clientY: 0 });
     };
-
     el.addEventListener("mousemove", onMove);
     el.addEventListener("mouseenter", onEnter);
     el.addEventListener("mouseleave", onLeave);
-
     return () => {
       el.removeEventListener("mousemove", onMove);
       el.removeEventListener("mouseenter", onEnter);
@@ -102,9 +85,7 @@ export default function HeroSection() {
 
   const slantStyle = {
     transform: hover
-      ? `translate(${mousePos.x * -60}px, ${
-          mousePos.y * -60
-        }px) scale(1.1) translate(-50%, -50%)`
+      ? `translate(${mousePos.x * -60}px, ${mousePos.y * -60}px) scale(1.1) translate(-50%, -50%)`
       : "translate(-50%, -50%) scale(1.1)",
     transition: hover ? "transform 0.1s ease-out" : "transform 0.3s ease-out",
   };
@@ -117,10 +98,11 @@ export default function HeroSection() {
       id="home"
       className="relative min-h-screen flex flex-col bg-black overflow-hidden"
     >
+      {/* Background slide */}
       <AnimatePresence initial={false}>
         <motion.div
           key={current}
-          className="absolute inset-0 bg-cover bg-center z-0 will-change-opacity will-change-transform"
+          className="absolute inset-0 bg-cover bg-center z-0"
           style={{ backgroundImage: `url(${heroImages[current]})` }}
           initial={{ opacity: 0, scale: 1.02 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -129,25 +111,49 @@ export default function HeroSection() {
         />
       </AnimatePresence>
 
-      <div className='absolute inset-0 bg-[url("data:image/svg+xml,%3Csvg%20width%3D%2760%27%20height%3D%2760%27%20viewBox%3D%270%200%2060%2060%27%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%3Cg%20fill%3D%22none%22%3E%3Cg%20fill%3D%22%23ffffff%22%20fill-opacity%3D%220.06%22%3E%3Ccircle%20cx%3D%227%22%20cy%3D%227%22%20r%3D%221%22/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")] bg-repeat opacity-30 pointer-events-none z-10' />
+      {/* Pattern overlay */}
+      <div className='absolute inset-0 bg-[url("data:image/svg+xml,%3Csvg%20width%3D%2760%27%20height%3D%2760%27...%3E")] bg-repeat opacity-30 pointer-events-none z-10' />
 
+      {/* Logo & Navigation */}
       <div className="absolute top-4 left-4 md:top-6 md:left-8 z-20">
-        <img
-          src="/images/hero-component/text-collab.png"
-          alt="Collab Logo"
-          className="h-6 md:h-8"
-        />
+        <img src="/images/hero-component/text-collab.png" alt="Collab Logo" className="h-6 md:h-8" />
       </div>
       <div className="absolute top-4 right-4 md:top-6 md:right-8 z-20">
         <Navigation />
       </div>
 
-      <div className="absolute inset-0 flex items-center justify-center z-10 overflow-visible">
+      {/* Center Content */}
+      <div className="absolute inset-0 flex items-center justify-center z-10">
         <div className="relative w-full max-w-[420px] px-4 text-center">
+
+          {/* 1. Base frame (neon) */}
+          <img
+            src="/images/hero-component/frame-miring.png"
+            alt="Slanted Frame"
+            className="absolute top-1/2 left-1/2 z-10 pointer-events-none"
+            style={slantStyle}
+          />
+
+          {/* 2. Top image */}
+          <img
+            src={topImages[current]}
+            alt="Top Image"
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-[15%] w-260 md:w-300 z-20 pointer-events-none"
+          />
+
+          {/* 3. Top frame (putih) */}
+          <img
+            src="/images/hero-component/frame-tegak.png"
+            alt="Main Frame"
+            className="w-full h-auto object-contain relative z-30"
+            style={frameStyle}
+          />
+
+          {/* 4. Text */}
           <AnimatePresence mode="wait">
             <motion.div
               key={current}
-              className="absolute top-[5%] left-[18%] z-30 pointer-events-none flex flex-col items-center gap-2 text-center"
+              className="absolute top-[5%] left-[18%] z-40 pointer-events-none flex flex-col items-center gap-2 text-center"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
@@ -164,44 +170,27 @@ export default function HeroSection() {
             </motion.div>
           </AnimatePresence>
 
-          <img
-            src="/images/hero-component/frame-miring.png"
-            alt="Slanted Frame"
-            className="absolute top-1/2 left-1/2 z-0 pointer-events-none"
-            style={slantStyle}
-          />
-
-          <img
-            src="/images/hero-component/frame-tegak.png"
-            alt="Main Frame"
-            className="w-full h-auto object-contain relative z-10"
-            style={frameStyle}
-          />
         </div>
       </div>
 
+      {/* Button */}
       <div className="relative z-10 flex flex-col items-center pb-8 mt-auto">
         <button
-          onClick={() =>
-            document
-              .getElementById("showcase")
-              ?.scrollIntoView({ behavior: "smooth" })
-          }
-          className="bg-gradient-to-r from-[#00e0d6] to-[#00c0a3] text-white font-semibold text-sm px-8 py-1.5 rounded-full shadow-[0_0_20px_4px_rgba(0,224,214,0.6)] drop-shadow-[0_4px_12px_rgba(0,224,214,0.4)] transition duration-300 hover:scale-105 cursor-pointer z-30"
+          onClick={() => document.getElementById("showcase")?.scrollIntoView({ behavior: "smooth" })}
+          className="bg-gradient-to-r from-[#00e0d6] to-[#00c0a3] text-white font-semibold text-sm px-8 py-1.5 rounded-full shadow-[0_0_20px_4px_rgba(0,224,214,0.6)] transition duration-300 hover:scale-105"
         >
           See More!
         </button>
       </div>
 
+      {/* Indicators */}
       <div className="absolute bottom-6 right-8 flex gap-2 z-20">
         {heroImages.map((_, i) => (
           <button
             key={i}
             onClick={() => i !== current && setCurrent(i)}
             className={`transition-all duration-300 rounded-full cursor-pointer ${
-              i === current
-                ? "w-6 h-2.5 bg-white"
-                : "w-2.5 h-2.5 border border-white hover:bg-white/50"
+              i === current ? "w-6 h-2.5 bg-white" : "w-2.5 h-2.5 border border-white hover:bg-white/50"
             }`}
           />
         ))}
