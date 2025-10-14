@@ -48,24 +48,7 @@ const sections: SectionProps[] = [
     accent: "border-purple-400",
     button: "bg-purple-500",
   },
-  {
-    title: "Collab Event",
-    description:
-      "With integrated marketing services we can provide online to offline activation start from promotion on social media, KOL Community to Event offline activation. And connect with IP Promotor & Media for sponsorship management.",
-    solutions: [
-      "Event Planning",
-      "Budget Plan",
-      "Project Manager",
-      "Event Executions",
-      "Event Report",
-      "Online to Offline Strategy",
-      "Sponsorship Management",
-    ],
-    imageSrc: "/page/services/collab event.png",
-    color: "text-orange-400",
-    accent: "border-orange-400",
-    button: "bg-orange-500",
-  },
+
   {
     title: "Collab Media",
     description:
@@ -94,6 +77,24 @@ const sections: SectionProps[] = [
     accent: "border-red-500",
     button: "bg-red-600",
   },
+  {
+    title: "Collab Event",
+    description:
+      "With integrated marketing services we can provide online to offline activation start from promotion on social media, KOL Community to Event offline activation. And connect with IP Promotor & Media for sponsorship management.",
+    solutions: [
+      "Event Planning",
+      "Budget Plan",
+      "Project Manager",
+      "Event Executions",
+      "Event Report",
+      "Online to Offline Strategy",
+      "Sponsorship Management",
+    ],
+    imageSrc: "/page/services/collab event.png",
+    color: "text-orange-400",
+    accent: "border-orange-400",
+    button: "bg-orange-500",
+  },
 ];
 
 export default function ContentSection() {
@@ -109,12 +110,18 @@ export default function ContentSection() {
           {/* Text Content */}
           <div className="w-full md:w-1/2">
             <div className="flex items-center gap-2 mb-3">
-              <div className={`w-3 h-3 rounded-full ${section.color} bg-current`} />
-              <h2 className="text-2xl md:text-3xl font-bold">{section.title}</h2>
+              <div
+                className={`w-3 h-3 rounded-full ${section.color} bg-current`}
+              />
+              <h2 className="text-2xl md:text-3xl font-bold">
+                {section.title}
+              </h2>
             </div>
             <p className="text-white/70 mb-6">{section.description}</p>
 
-            <h3 className={`${section.color} mb-3 font-semibold`}>Our Solutions</h3>
+            <h3 className={`${section.color} mb-3 font-semibold`}>
+              Our Solutions
+            </h3>
             <div className="flex flex-wrap gap-3 mb-6">
               {section.solutions.map((item) => (
                 <span
