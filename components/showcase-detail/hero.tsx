@@ -8,22 +8,25 @@ import Navbar from "../navbar";
 const slides = [
   { src: "/assets/showcase-detail/naruto.png", title: "ChatGPT Showcase" },
   { src: "/assets/showcase-detail/nobita.png", title: "Anime Characters" },
-  { src: "/assets/showcase-detail/onepiece.png", title: "Creative Team" },
+  { src: "/assets/showcase-detail/onepiece.png", title: "Creative Team" }, // <- ini yang default
   { src: "/assets/showcase-detail/prompts.png", title: "Design Concepts" },
   { src: "/assets/showcase-detail/nobita.png", title: "User Experience" },
 ];
 
 export default function Hero() {
-  const [current, setCurrent] = useState(0);
+  // Ubah 0 -> 2 agar gambar ke-3 jadi default
+  const [current, setCurrent] = useState(2);
+
   const prev = () => setCurrent((c) => (c - 1 + slides.length) % slides.length);
   const next = () => setCurrent((c) => (c + 1) % slides.length);
+
   const ParamBadge = ({ label }: { label: string }) => (
     <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1">
       <span className="relative inline-flex h-4 w-4 items-center justify-center">
         <span className="absolute inset-0 rounded-full border border-cyan-400/60" />
         <span className="h-2 w-2 rounded-full bg-cyan-400" />
       </span>
-      <span className="text-xs text-slate-200">{label}</span>
+      <span className="text-xs text-slate-2 00">{label}</span>
     </span>
   );
 
