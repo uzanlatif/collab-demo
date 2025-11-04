@@ -13,7 +13,8 @@ export default function Navbar() {
     { label: "Showcase", path: "/showcase" },
     { label: "Services", path: "/services" },
     { label: "Career", path: "/career" },
-    { label: "Contact Us", path: "/contact-us" },
+    { label: "Culture", path: "/culture" },
+    { label: "Insight", path: "/insight" },
   ];
 
   return (
@@ -28,25 +29,36 @@ export default function Navbar() {
         />
       </Link>
 
-      <ul className="flex space-x-6 text-sm font-medium text-white/80">
-        {navItems.map((item) => {
-          const isActive = pathname === item.path;
-          return (
-            <li key={item.label}>
-              <Link
-                href={item.path}
-                className={`hover:text-white transition-all ${
-                  isActive
-                    ? "text-white border-b-2 border-cyan-400 pb-1"
-                    : ""
-                }`}
-              >
-                {item.label}
-              </Link>
-            </li>
-          );
-        })}
-      </ul>
+      {/* Nav links + Get Started button */}
+      <div className="flex items-center gap-6">
+        <ul className="flex space-x-6 text-sm font-medium text-white/80">
+          {navItems.map((item) => {
+            const isActive = pathname === item.path;
+            return (
+              <li key={item.path}>
+                <Link
+                  href={item.path}
+                  className={`hover:text-white transition-all ${
+                    isActive ? "text-white border-b-2 border-cyan-400 pb-1" : ""
+                  }`}
+                  aria-current={isActive ? "page" : undefined}
+                >
+                  {item.label}
+                </Link>
+              </li>
+            );
+          })}
+        </ul>
+
+        {/* Get Started button (kanan) */}
+        <Link
+          href="/get-started"
+          className="inline-flex items-center rounded-full bg-white text-black text-sm font-semibold px-4 py-2 shadow hover:bg-white/90 transition"
+          aria-label="Get Started"
+        >
+          Get Started
+        </Link>
+      </div>
     </nav>
   );
 }
