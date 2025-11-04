@@ -1,6 +1,7 @@
 // "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { Menu, X } from "lucide-react";
 
 export default function Navigation() {
@@ -8,56 +9,81 @@ export default function Navigation() {
 
   const navItems = [
     { name: "Home", href: "#home" },
-    { name: "About", href: "/about" },
-    { name: "Showcase", href: "showcase" },
-    { name: "Services", href: "services" },
-    { name: "Contact Us", href: "#contact" },
+    { name: "Services", href: "/services" },
+    { name: "Showcase", href: "/showcase" },
+    { name: "Career", href: "/career" },
+    { name: "Culture", href: "/culture" },
+    { name: "Insight", href: "/insight" },
   ];
 
   return (
     <nav className="relative z-50">
-      {/* Desktop Navigation */}
-      <div className="hidden md:flex flex-col items-end space-y-2 p-6 pr-8 text-right">
+      {/* Desktop */}
+      <div className="hidden md:flex items-center justify-end gap-8 py-6 pr-8">
         {navItems.map((item) => (
-          <a
+          <Link
             key={item.name}
             href={item.href}
             onClick={() => setIsOpen(false)}
-            className={`relative text-sm transition-all duration-300 transform hover:scale-105 ${
+            className={`relative text-sm transition-all duration-300 hover:scale-105 ${
               item.name === "Home"
-                ? "font-bold text-white after:content-[''] after:absolute after:-bottom-1 after:right-0 after:w-4 after:h-0.5 after:bg-cyan-400"
+                ? "font-bold text-white after:content-[''] after:absolute after:-bottom-1 after:left-0 after:h-0.5 after:w-5 after:bg-cyan-400"
                 : "text-white/80 hover:text-cyan-400"
             }`}
           >
             {item.name}
-          </a>
+          </Link>
         ))}
+
+        {/* CTA */}
+        <Link
+          href="/get-started"
+          className="ml-2 rounded-full bg-white px-4 py-2 text-sm font-semibold text-slate-900 shadow-sm hover:shadow transition"
+        >
+          Get Started
+        </Link>
       </div>
 
-      {/* Mobile Hamburger Button */}
+      {/* Mobile hamburger */}
       <div className="absolute top-6 right-6 md:hidden">
-        <button onClick={() => setIsOpen(!isOpen)} className="text-white p-2">
+        <button
+          aria-label="Toggle menu"
+          aria-expanded={isOpen}
+          onClick={() => setIsOpen((s) => !s)}
+          className="text-white p-2"
+        >
           {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
         </button>
       </div>
 
-      {/* Mobile Overlay Menu */}
+      {/* Mobile overlay */}
       {isOpen && (
-        <div className="fixed inset-0 bg-black/90 backdrop-blur-sm flex flex-col justify-center items-center space-y-6 text-white text-lg md:hidden transition-all">
-          {navItems.map((item) => (
-            <a
-              key={item.name}
-              href={item.href}
+        <div className="fixed inset-0 bg-black/90 backdrop-blur-sm md:hidden">
+          <div className="flex h-full flex-col items-center justify-center gap-6 text-white">
+            {navItems.map((item) => (
+              <Link
+                key={item.name}
+                href={item.href}
+                onClick={() => setIsOpen(false)}
+                className={`relative text-lg transition-transform duration-300 hover:scale-105 ${
+                  item.name === "Home"
+                    ? "font-bold text-white after:content-[''] after:absolute after:-bottom-1 after:left-1/2 after:-translate-x-1/2 after:h-0.5 after:w-6 after:bg-cyan-400"
+                    : "text-white/80 hover:text-cyan-400"
+                }`}
+              >
+                {item.name}
+              </Link>
+            ))}
+
+            {/* CTA on mobile */}
+            <Link
+              href="/get-started"
               onClick={() => setIsOpen(false)}
-              className={`relative transition-all duration-300 transform hover:scale-105 ${
-                item.name === "Home"
-                  ? "font-bold text-white after:content-[''] after:absolute after:-bottom-1 after:right-0 after:w-4 after:0.5 after:bg-cyan-400"
-                  : "text-white/80 hover:text-cyan-400"
-              }`}
+              className="mt-4 rounded-full bg-white px-5 py-2 text-base font-semibold text-slate-900 shadow-sm hover:shadow"
             >
-              {item.name}
-            </a>
-          ))}
+              Get Started
+            </Link>
+          </div>
         </div>
       )}
     </nav>
