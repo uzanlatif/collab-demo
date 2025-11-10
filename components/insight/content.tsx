@@ -16,18 +16,102 @@ type Post = {
 };
 
 const POSTS: Post[] = [
-  { title: "Lorem ipsum dolor sit amet, consectetur", excerpt: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore.", category: "Design", minutes: 5, author: "Thauf Arifian", date: "3 November 2025", image: "/assets/insight/green.png" },
-  { title: "Lorem ipsum dolor sit amet, consectetur", excerpt: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore.", category: "Marketing", minutes: 10, author: "Nicky Gawa", date: "3 November 2025", image: "/assets/insight/orange.png" },
-  { title: "Lorem ipsum dolor sit amet, consectetur", excerpt: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore.", category: "Copywriting", minutes: 7, author: "Della Andina", date: "3 November 2025", image: "/assets/insight/pink 2.png" },
-  { title: "Lorem ipsum dolor sit amet, consectetur", excerpt: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore.", category: "Design", minutes: 6, author: "Thauf Arifian", date: "3 November 2025", image: "/assets/insight/pink.png" },
-  { title: "Lorem ipsum dolor sit amet, consectetur", excerpt: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore.", category: "Copywriting", minutes: 7, author: "Della Andina", date: "3 November 2025", image: "/assets/insight/green.png" },
-  { title: "Lorem ipsum dolor sit amet, consectetur", excerpt: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore.", category: "Design", minutes: 5, author: "Thauf Arifian", date: "3 November 2025", image: "/assets/insight/orange.png" },
-  { title: "Lorem ipsum dolor sit amet, consectetur", excerpt: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore.", category: "Marketing", minutes: 8, author: "Nicky Gawa", date: "3 November 2025", image: "/assets/insight/pink.png" },
-  { title: "Lorem ipsum dolor sit amet, consectetur", excerpt: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore.", category: "Design", minutes: 5, author: "Thauf Arifian", date: "3 November 2025", image: "/assets/insight/pink 2.png" },
-  { title: "Lorem ipsum dolor sit amet, consectetur", excerpt: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore.", category: "Marketing", minutes: 9, author: "Nicky Gawa", date: "3 November 2025", image: "/assets/insight/green.png" },
+  {
+    title: "Lorem ipsum dolor sit amet, consectetur",
+    excerpt:
+      "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore.",
+    category: "Design",
+    minutes: 5,
+    author: "Thauf Arifian",
+    date: "3 November 2025",
+    image: "/assets/insight/green.png",
+  },
+  {
+    title: "Lorem ipsum dolor sit amet, consectetur",
+    excerpt:
+      "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore.",
+    category: "Marketing",
+    minutes: 10,
+    author: "Nicky Gawa",
+    date: "3 November 2025",
+    image: "/assets/insight/orange.png",
+  },
+  {
+    title: "Lorem ipsum dolor sit amet, consectetur",
+    excerpt:
+      "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore.",
+    category: "Copywriting",
+    minutes: 7,
+    author: "Della Andina",
+    date: "3 November 2025",
+    image: "/assets/insight/pink 2.png",
+  },
+  {
+    title: "Lorem ipsum dolor sit amet, consectetur",
+    excerpt:
+      "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore.",
+    category: "Design",
+    minutes: 6,
+    author: "Thauf Arifian",
+    date: "3 November 2025",
+    image: "/assets/insight/pink.png",
+  },
+  {
+    title: "Lorem ipsum dolor sit amet, consectetur",
+    excerpt:
+      "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore.",
+    category: "Copywriting",
+    minutes: 7,
+    author: "Della Andina",
+    date: "3 November 2025",
+    image: "/assets/insight/green.png",
+  },
+  {
+    title: "Lorem ipsum dolor sit amet, consectetur",
+    excerpt:
+      "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore.",
+    category: "Design",
+    minutes: 5,
+    author: "Thauf Arifian",
+    date: "3 November 2025",
+    image: "/assets/insight/orange.png",
+  },
+  {
+    title: "Lorem ipsum dolor sit amet, consectetur",
+    excerpt:
+      "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore.",
+    category: "Marketing",
+    minutes: 8,
+    author: "Nicky Gawa",
+    date: "3 November 2025",
+    image: "/assets/insight/pink.png",
+  },
+  {
+    title: "Lorem ipsum dolor sit amet, consectetur",
+    excerpt:
+      "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore.",
+    category: "Design",
+    minutes: 5,
+    author: "Thauf Arifian",
+    date: "3 November 2025",
+    image: "/assets/insight/pink 2.png",
+  },
+  {
+    title: "Lorem ipsum dolor sit amet, consectetur",
+    excerpt:
+      "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore.",
+    category: "Marketing",
+    minutes: 9,
+    author: "Nicky Gawa",
+    date: "3 November 2025",
+    image: "/assets/insight/green.png",
+  },
 ];
 
-const CATEGORY_STYLE: Record<Post["category"], { text: string; avatar: string }> = {
+const CATEGORY_STYLE: Record<
+  Post["category"],
+  { text: string; avatar: string }
+> = {
   Design: { text: "text-amber-400", avatar: "from-amber-400 to-orange-300" },
   Marketing: { text: "text-pink-400", avatar: "from-pink-400 to-fuchsia-300" },
   Copywriting: { text: "text-teal-400", avatar: "from-teal-400 to-cyan-300" },
@@ -111,18 +195,20 @@ export default function ContentSection() {
   return (
     <section className="px-4 md:px-8 lg:px-12 pt-0 pb-8 text-white">
       {/* Search bar */}
-      <div className="mx-auto max-w-3xl mb-8">
-        <label htmlFor="search" className="sr-only">Search articles</label>
-        <div className="relative">
+      <div className="w-full flex justify-center mt-6 mb-10">
+        <div className="relative w-[80%] max-w-3xl text-left">
           <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-[#00A093]" />
           <input
             id="search"
             value={q}
             onChange={(e) => setQ(e.target.value)}
             placeholder="Just type your topic here"
-            className="w-full rounded-full bg-[#1a1a1a] border border-white/15
-                       pl-11 pr-4 py-3 text-sm placeholder-white/40 outline-none
-                       focus:ring-2 focus:ring-[#00A093]/60"
+            className="w-full bg-[#111111] border border-[#222222]
+                 rounded-xl text-white/90 text-left
+                 pl-12 pr-4 py-3 text-sm md:text-base
+                 placeholder-white/40 outline-none
+                 focus:ring-2 focus:ring-[#00A093]/60
+                 transition-all duration-200"
           />
         </div>
       </div>
